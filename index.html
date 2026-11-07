@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>配信収益の手取り・申告ライン計算（令和8年分）</title>
+<meta name="description" content="YouTubeなど配信の収入を入れるだけで、手取りの目安と「確定申告が要るか・扶養から外れるか」を令和8年分の数字で表示。入力は端末の外に送りません。">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>配信収益の手取り・申告ライン計算</h1>
+  <p class="sub">令和8年分（2026年1〜12月の収入）／入力した金額はこの端末の外に送られません</p>
+</header>
+<main>
+  <form id="f" autocomplete="off">
+    <section>
+      <h2>1. 配信の収入（年間・円）</h2>
+      <fieldset class="modes">
+        <label><input type="radio" name="mode" value="studio" checked> YouTube Studio に表示された額を入れる（そのまま使う）</label>
+        <label><input type="radio" name="mode" value="gross"> 視聴者が払った額を入れる（公式の分配率を掛ける）</label>
+      </fieldset>
+      <label class="row">YouTube 広告（通常の動画）<small id="rAds"></small><input type="number" inputmode="numeric" min="0" step="1" name="ytAds" placeholder="0"></label>
+      <label class="row">YouTube ショートの広告<small id="rShorts"></small><input type="number" inputmode="numeric" min="0" step="1" name="ytShorts" placeholder="0"></label>
+      <label class="row">メンバーシップ・Super Chat・Super Stickers・Super Thanks<small id="rFan"></small><input type="number" inputmode="numeric" min="0" step="1" name="ytFan" placeholder="0"></label>
+      <p class="hint">他のサービスは分配率が確認できていないため、<b>受け取る額（円）</b>をそのまま入れてください。</p>
+      <label class="row">Twitch（受取額）<input type="number" inputmode="numeric" min="0" step="1" name="o1" placeholder="0"></label>
+      <label class="row">ツイキャス（受取額）<input type="number" inputmode="numeric" min="0" step="1" name="o2" placeholder="0"></label>
+      <label class="row">ニコニコ・17LIVE・その他（受取額）<input type="number" inputmode="numeric" min="0" step="1" name="o3" placeholder="0"></label>
+    </section>
+    <section>
+      <h2>2. 経費（年間・円）</h2>
+      <label class="row">配信に使った機材・ソフト・通信費などのうち、経費にできる額<input type="number" inputmode="numeric" min="0" step="1" name="expenses" placeholder="0"></label>
+    </section>
+    <section>
+      <h2>3. あなたの立場</h2>
+      <label class="row">給与収入（バイト・会社員など。年間の額面。ないなら 0）<input type="number" inputmode="numeric" min="0" step="1" name="salary" placeholder="0"></label>
+      <label class="row">年齢区分
+        <select name="age">
+          <option value="other">19〜22歳以外</option>
+          <option value="19-22">19〜22歳（その年の12月31日時点）</option>
+        </select>
+      </label>
+      <label class="check"><input type="checkbox" name="student"> 学生（勤労学生控除の目安も見る）</label>
+    </section>
+  </form>
+
+  <section id="out" aria-live="polite">
+    <h2>結果（目安）</h2>
+    <div class="cards">
+      <div class="card"><span>分配後の受取額</span><b id="vRev">0円</b></div>
+      <div class="card"><span>経費を引いた所得</span><b id="vInc">0円</b></div>
+    </div>
+    <p class="hint" id="tedoriNote">所得税・住民税の税額は計算していません（税率の根拠を確認していないため）。受取額から経費を引いたものが所得の目安です。</p>
+    <div id="verdicts"></div>
+  </section>
+
+  <section class="notes">
+    <h2>注意（必ず読んでください）</h2>
+    <ul>
+      <li><b>これは目安です。税務の判断ではありません。</b>最終判断は税務署・お住まいの市区町村・税理士へ。</li>
+      <li><b>住民税は別です。</b>所得が20万円以下で所得税の申告が要らなくても、住民税の申告が必要になる場合があります。</li>
+      <li>20万円は「収入」ではなく「所得（収入−経費）」です。経費にできる範囲は、所得の区分（雑所得・事業所得）や実態で変わります。赤字は0として扱っています。</li>
+      <li>給与が1か所のみで全額源泉徴収されている人の場合の目安です。給与が2か所以上、年金がある、医療費控除・ふるさと納税などで申告する場合は別の条件があります。</li>
+      <li>ここでの「扶養」は<b>所得税の扶養控除</b>の目安です。健康保険・勤務先の扶養は別の基準です。親の扶養は16歳以上など別の条件もあります。</li>
+      <li>社会保険料・その他の控除は考えていません。MCN所属などで取り分が違う場合は、実際に受け取る額を入れてください。</li>
+      <li>基準は令和8年分のみ。税制は毎年変わります（最終確認日 2026-11-06）。</li>
+    </ul>
+    <h2>この計算の数字と出典</h2>
+    <table>
+      <thead><tr><th>数字</th><th>内容</th><th>出典</th></tr></thead>
+      <tbody>
+        <tr><td>55% / 45% / 70%</td><td>YouTube の分配率。広告 55%、ショート 45%（プール割当）、メンバーシップ等 70%（視聴者ファンディング有効時）</td><td><a href="https://support.google.com/youtube/answer/72902?hl=ja" target="_blank" rel="noopener">YouTube ヘルプ</a></td></tr>
+        <tr><td>20万円（超）</td><td>給与1か所のみで源泉済なら、給与以外の所得が20万円超で確定申告が必要。給与2,000万円超は必須</td><td><a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1900.htm" target="_blank" rel="noopener">国税庁 No.1900</a></td></tr>
+        <tr><td>62万円</td><td>扶養親族の合計所得要件（令和8年分から）</td><td><a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1180.htm" target="_blank" rel="noopener">国税庁 No.1180</a></td></tr>
+        <tr><td>74万円 / 136万円</td><td>給与所得控除の最低保障（令和8年分）。給与収入136万円以下なら控除74万円で、給与のみの合計所得が62万円以下</td><td><a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1190.htm" target="_blank" rel="noopener">国税庁 No.1190</a></td></tr>
+        <tr><td>123万円</td><td>特定親族特別控除（19〜22歳）の対象となる合計所得の上限</td><td><a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1177.htm" target="_blank" rel="noopener">国税庁 No.1177</a></td></tr>
+        <tr><td>89万円 / 10万円 / 27万円</td><td>勤労学生控除（令和8年分から合計所得89万円以下、給与など勤労以外の所得10万円以下）</td><td><a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1175.htm" target="_blank" rel="noopener">国税庁 No.1175</a></td></tr>
+        <tr><td>104万円</td><td>基礎控除（令和8・9年分、合計所得489万円以下）。給与がない人の「所得税がかからない」目安に使用</td><td><a href="https://www.nta.go.jp/publication/pamph/koho/kurashi/html/01_1.htm" target="_blank" rel="noopener">国税庁 暮らしの税情報</a></td></tr>
+        <tr><td>住民税の申告</td><td>所得が20万円以下でも住民税の申告が必要な場合がある（広島市の例）</td><td><a href="https://www.city.hiroshima.lg.jp/site/juminzei/1923.html" target="_blank" rel="noopener">広島市</a></td></tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+<footer>黎明研究所 ／ 無料ツール。計算結果による損害について責任を負いません。</footer>
+<script src="calc.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
