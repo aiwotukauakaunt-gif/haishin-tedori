@@ -5,14 +5,32 @@ const { calculate: c, CONST } = require('../calc.js');
 const M = 10000;
 const base = { mode: 'studio', salary: 0, age: 'other' };
 
-test('分配率: 視聴者支払額モード 広告55%・ショート45%・ファン70%', () => {
-  const r = c({ mode: 'gross', ytAds: 100000, ytShorts: 100000, ytFan: 100000 });
-  assert.equal(r.yt, 55000 + 45000 + 70000);
+test('YouTube は表示額を足すだけ（率を掛けない）・他プラットフォームも足すだけ', () => {
+  const r = c({ ...base, ytAds: 100000, ytShorts: 10000, ytFan: 50000, other: [30000, 20000] });
+  assert.equal(r.revenue, 210000);
 });
 
-test('Studio表示額モードは率を掛けない・他プラットフォームは足すだけ', () => {
-  const r = c({ ...base, ytAds: 100000, ytFan: 50000, other: [30000, 20000] });
-  assert.equal(r.revenue, 200000);
+test('境界: 給与136万円超でも19〜22歳は特定親族特別控除（197万円まで）、198万円で外れる', () => {
+  const y = { ...base, age: '19-22' };
+  assert.equal(c({ ...y, salary: 1360001 }).dependent.status, 'tokutei');
+  assert.equal(c({ ...y, salary: 1970000 }).dependent.status, 'tokutei');
+  assert.equal(c({ ...y, salary: 1970000 }).total, 1230000);
+  assert.equal(c({ ...y, salary: 1970000, ytAds: 1 }).dependent.status, 'out');
+  assert.equal(c({ ...y, salary: 1970001 }).dependent.status, 'out');
+  assert.equal(c({ ...base, salary: 1500000 }).dependent.status, 'out'); // 19〜22歳以外
+});
+
+test('境界: 勤労学生 給与163万円ちょうど（合計所得89万円）は範囲内、超で範囲外', () => {
+  const s = { ...base, student: true };
+  assert.equal(c({ ...s, salary: 1630000 }).total, 890000);
+  assert.equal(c({ ...s, salary: 1630000 }).student.ok, true);
+  assert.equal(c({ ...s, salary: 1630001 }).student.ok, false);
+  assert.equal(c({ ...s, salary: 1500000 }).student.ok, true); // 136万円超でも範囲内
+});
+
+test('勤労学生: 給与0円（勤労の所得なし）は範囲外', () => {
+  assert.equal(c({ ...base, student: true, ytAds: 50000 }).student.ok, false);
+  assert.equal(c({ ...base, student: true }).student.ok, false);
 });
 
 test('経費を引いて所得。赤字は0', () => {
@@ -79,11 +97,10 @@ test('勤労学生: 合計所得89万円以下かつ配信所得10万円以下',
   const s = { ...base, student: true, salary: 1300000 }; // 給与所得56万円
   assert.equal(c({ ...s, ytAds: 100000 }).student.ok, true);
   assert.equal(c({ ...s, ytAds: 100001 }).student.ok, false);
-  assert.equal(c({ ...base, student: true, salary: 1500000, ytAds: 0 }).student.ok, false); // 136万超
 });
 
 test('不正入力は0扱い', () => {
-  const r = c({ mode: 'studio', ytAds: 'abc', ytFan: -5, other: [null, ''] });
+  const r = c({ ytAds: 'abc', ytFan: -5, other: [null, ''] });
   assert.equal(r.revenue, 0);
 });
 
