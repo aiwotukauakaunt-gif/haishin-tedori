@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://aiwotukauakaunt-gif.github.io/haishin-tedori/sitemap.xml
