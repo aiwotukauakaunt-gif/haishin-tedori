@@ -4,15 +4,87 @@
 <meta charset="utf-8">
   <meta name="google-site-verification" content="Ik967YoOHiVT1r_4Fv8HKSIYElN8ERBooEyKT-tR7v0" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>配信収益の受取額・所得・申告ライン計算（令和8年分）</title>
-<meta name="description" content="YouTubeなど配信の収入を入れるだけで、所得の目安と「確定申告が要るか・扶養から外れるか」を令和8年分の数字で表示。入力は端末の外に送りません。">
+<title>YouTubeなど配信の収益、確定申告はいくらから？扶養・所得を計算（令和8年分）</title>
+<meta name="description" content="YouTubeなど配信の収益で、確定申告が要るか（20万円）・親の扶養から外れるか（62万円）を令和8年分の数字で無料計算。メンバーシップ・スパチャ対応、学生向けのよくある質問つき。入力は端末の外に送りません。">
 <link rel="canonical" href="https://aiwotukauakaunt-gif.github.io/haishin-tedori/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://aiwotukauakaunt-gif.github.io/haishin-tedori/">
-<meta property="og:title" content="配信収益の受取額・所得・申告ライン計算（令和8年分）">
-<meta property="og:description" content="配信の収入を入れるだけで、確定申告が要るか・扶養から外れるかの目安を表示。入力は端末の外に送りません。">
+<meta property="og:title" content="YouTubeなど配信の収益、確定申告はいくらから？扶養・所得を計算（令和8年分）">
+<meta property="og:description" content="YouTubeなど配信の収益で、確定申告が要るか（20万円）・親の扶養から外れるか（62万円）を令和8年分の数字で無料計算。メンバーシップ・スパチャ対応、学生向けのよくある質問つき。入力は端末の外に送りません。">
 <meta name="twitter:card" content="summary">
 <link rel="stylesheet" href="style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "YouTube の収益は、いくらから確定申告が必要ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "給与が1か所だけで全額源泉徴収されている人（バイト・会社員など）は、給与・退職以外の所得の合計が20万円を超えると確定申告が必要になる、というのが国税庁の目安です。\nこの20万円は「収入」ではなく「所得」（収入−経費）です。経費を引いた後の額で見ます。\n給与がない人は、このツールでは基礎控除104万円（令和8・9年分）を超えるかどうかで目安を出しています。年金がある・医療費控除やふるさと納税で申告するなど、別の事情がある場合は条件が変わります。\n目安です。最終判断は税務署へ。\n出典: 国税庁 No.1900"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "学生が配信で稼ぐと、親の扶養から外れますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "所得税の扶養控除は、扶養される人の合計所得が62万円以下であることが条件です（令和8年分から。令和7年分は58万円以下でした）。見るのは収入ではなく所得（収入−経費）です。給与だけの人なら、収入136万円以下がこれに相当します。\n19〜22歳（その年の12月31日時点）は、62万円を超えても合計所得123万円以下までは「特定親族特別控除」の対象で、親の控除額は段階的に減る仕組みです（いきなりゼロにはなりません）。\nここで説明しているのは所得税の扶養控除です。健康保険の扶養や、親の勤務先の家族手当は別の基準です。\n目安です。最終判断は税務署・親の勤務先へ。\n出典: 国税庁 No.1180、国税庁 No.1190、国税庁 No.1177"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "バイトもしている場合、扶養に入れる配信収益の上限は？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "令和8年分は、給与収入が136万円以下なら給与所得は「給与収入−74万円」です。これに配信の所得（収入−経費）を足した合計所得が62万円以下なら、扶養控除の範囲の目安です。\n例: バイトの年収が100万円なら給与所得は26万円。配信の所得は36万円までなら合計62万円で、範囲内です。\nただしこの例では配信の所得が20万円を超えるので、扶養の範囲内でも、確定申告が必要になる目安（給与1か所のみ・源泉徴収済の場合）です。扶養と申告は別々に判定されます。\n金額を入れると、ページ上の計算フォームで自動で出ます。\n出典: 国税庁 No.1190、国税庁 No.1900"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "メンバーシップ・Super Chat（スパチャ）も所得に入りますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "このツールでは、YouTube の広告・ショート・メンバーシップ・Super Chat・Super Stickers・Super Thanks をすべて「配信の収入」として合算して計算します。YouTube Studio に表示された収益（あなたの取り分）を入れてください。分配率はこちらで掛けません。\n収入に数えるのは、その年に確定した月の分（Studio の確定額）です。\n雑所得か事業所得かなど所得の区分や、経費にできる範囲は、活動の実態で変わります。判断は税務署・税理士へ。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "所得税の申告が不要でも、住民税の申告は必要ですか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "別になる場合があります。広島市の公式ページには、給与所得以外の所得が20万円以下で所得税の確定申告が不要な人も、市民税・県民税の申告書の提出が必要、とあります（提出期限は原則3月15日）。\n住民税の扱いは自治体ごとに異なるので、お住まいの市区町村の窓口で確認してください。住民税が非課税になる限度額も自治体で違い、このツールでは扱っていません。\n出典: 広島市"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "配信の経費には何が入りますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "確定申告の20万円や扶養の62万円は、経費を引いた後の「所得」で判定します。経費を入れると結果が変わるので、計算フォームの「経費」欄に入れてみてください。経費が収入を上回る赤字は、このツールでは0として扱います。\n機材・ソフト・通信費などを検討する人が多いですが、何が経費にできるかは、所得の区分（雑所得・事業所得）や使い方の実態で変わります。このツールは経費を判定せず、入力した金額をそのまま使います。\n迷ったら税務署・税理士に確認してください。\n出典: 国税庁 No.1900"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "勤労学生控除とは何ですか？学生なら必ず受けられますか？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "令和8年分から、合計所得89万円以下で、給与など勤労以外の所得が10万円以下の学生が受けられる控除です（控除額27万円）。学校の種類などの別の要件もあります。\nこのツールでは、給与がない場合（勤労の所得がない場合）は範囲外の目安として表示します。学生にチェックを入れて計算すると、目安が出ます。\n出典: 国税庁 No.1175"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "古い記事の数字（103万円・48万円など）と違うのはなぜ？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "税制は毎年変わります。扶養の所得要件は、令和7年分が58万円以下、令和8年分から62万円以下です。古い記事には、改正前の数字が載っていることがあります。\nこのページは令和8年分（2026年1〜12月の収入。申告は2027年2〜3月ごろ）に絞って、国税庁のページで確認した数字だけを使っています。最終確認日は2026-11-06です。\n出典: 国税庁 No.1180"
+      }
+    }
+  ]
+}
+</script>
 <!-- アクセス数だけを数える（入力した金額は送らない） -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y8JEGHCG0G"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-Y8JEGHCG0G');</script>
@@ -61,6 +133,66 @@
     <p class="hint" id="tedoriNote">所得税・住民税の税額は計算していません（税率の根拠を確認していないため）。受取額から経費を引いたものが所得の目安です。</p>
     <p class="hint">16歳未満の子は扶養控除の対象外です。</p>
     <div id="verdicts"></div>
+  </section>
+
+  <section class="faq" id="faq">
+    <h2>よくある質問（確定申告・扶養・住民税）</h2>
+    <p class="hint">令和8年分の目安です。税務の判断ではありません。最終判断は税務署・お住まいの市区町村へ。</p>
+    <details>
+      <summary>YouTube の収益は、いくらから確定申告が必要ですか？</summary>
+      <p>給与が1か所だけで全額源泉徴収されている人（バイト・会社員など）は、給与・退職以外の所得の合計が20万円を超えると確定申告が必要になる、というのが国税庁の目安です。</p>
+      <p>この20万円は「収入」ではなく「所得」（収入−経費）です。経費を引いた後の額で見ます。</p>
+      <p>給与がない人は、このツールでは基礎控除104万円（令和8・9年分）を超えるかどうかで目安を出しています。年金がある・医療費控除やふるさと納税で申告するなど、別の事情がある場合は条件が変わります。</p>
+      <p>目安です。最終判断は税務署へ。</p>
+      <p class="src">出典: <a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1900.htm" target="_blank" rel="noopener">国税庁 No.1900</a></p>
+    </details>
+    <details>
+      <summary>学生が配信で稼ぐと、親の扶養から外れますか？</summary>
+      <p>所得税の扶養控除は、扶養される人の合計所得が62万円以下であることが条件です（令和8年分から。令和7年分は58万円以下でした）。見るのは収入ではなく所得（収入−経費）です。給与だけの人なら、収入136万円以下がこれに相当します。</p>
+      <p>19〜22歳（その年の12月31日時点）は、62万円を超えても合計所得123万円以下までは「特定親族特別控除」の対象で、親の控除額は段階的に減る仕組みです（いきなりゼロにはなりません）。</p>
+      <p>ここで説明しているのは所得税の扶養控除です。健康保険の扶養や、親の勤務先の家族手当は別の基準です。</p>
+      <p>目安です。最終判断は税務署・親の勤務先へ。</p>
+      <p class="src">出典: <a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1180.htm" target="_blank" rel="noopener">国税庁 No.1180</a>、<a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1190.htm" target="_blank" rel="noopener">国税庁 No.1190</a>、<a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1177.htm" target="_blank" rel="noopener">国税庁 No.1177</a></p>
+    </details>
+    <details>
+      <summary>バイトもしている場合、扶養に入れる配信収益の上限は？</summary>
+      <p>令和8年分は、給与収入が136万円以下なら給与所得は「給与収入−74万円」です。これに配信の所得（収入−経費）を足した合計所得が62万円以下なら、扶養控除の範囲の目安です。</p>
+      <p>例: バイトの年収が100万円なら給与所得は26万円。配信の所得は36万円までなら合計62万円で、範囲内です。</p>
+      <p>ただしこの例では配信の所得が20万円を超えるので、扶養の範囲内でも、確定申告が必要になる目安（給与1か所のみ・源泉徴収済の場合）です。扶養と申告は別々に判定されます。</p>
+      <p>金額を入れると、ページ上の計算フォームで自動で出ます。</p>
+      <p class="src">出典: <a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1190.htm" target="_blank" rel="noopener">国税庁 No.1190</a>、<a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1900.htm" target="_blank" rel="noopener">国税庁 No.1900</a></p>
+    </details>
+    <details>
+      <summary>メンバーシップ・Super Chat（スパチャ）も所得に入りますか？</summary>
+      <p>このツールでは、YouTube の広告・ショート・メンバーシップ・Super Chat・Super Stickers・Super Thanks をすべて「配信の収入」として合算して計算します。YouTube Studio に表示された収益（あなたの取り分）を入れてください。分配率はこちらで掛けません。</p>
+      <p>収入に数えるのは、その年に確定した月の分（Studio の確定額）です。</p>
+      <p>雑所得か事業所得かなど所得の区分や、経費にできる範囲は、活動の実態で変わります。判断は税務署・税理士へ。</p>
+    </details>
+    <details>
+      <summary>所得税の申告が不要でも、住民税の申告は必要ですか？</summary>
+      <p>別になる場合があります。広島市の公式ページには、給与所得以外の所得が20万円以下で所得税の確定申告が不要な人も、市民税・県民税の申告書の提出が必要、とあります（提出期限は原則3月15日）。</p>
+      <p>住民税の扱いは自治体ごとに異なるので、お住まいの市区町村の窓口で確認してください。住民税が非課税になる限度額も自治体で違い、このツールでは扱っていません。</p>
+      <p class="src">出典: <a href="https://www.city.hiroshima.lg.jp/site/juminzei/1923.html" target="_blank" rel="noopener">広島市</a></p>
+    </details>
+    <details>
+      <summary>配信の経費には何が入りますか？</summary>
+      <p>確定申告の20万円や扶養の62万円は、経費を引いた後の「所得」で判定します。経費を入れると結果が変わるので、計算フォームの「経費」欄に入れてみてください。経費が収入を上回る赤字は、このツールでは0として扱います。</p>
+      <p>機材・ソフト・通信費などを検討する人が多いですが、何が経費にできるかは、所得の区分（雑所得・事業所得）や使い方の実態で変わります。このツールは経費を判定せず、入力した金額をそのまま使います。</p>
+      <p>迷ったら税務署・税理士に確認してください。</p>
+      <p class="src">出典: <a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1900.htm" target="_blank" rel="noopener">国税庁 No.1900</a></p>
+    </details>
+    <details>
+      <summary>勤労学生控除とは何ですか？学生なら必ず受けられますか？</summary>
+      <p>令和8年分から、合計所得89万円以下で、給与など勤労以外の所得が10万円以下の学生が受けられる控除です（控除額27万円）。学校の種類などの別の要件もあります。</p>
+      <p>このツールでは、給与がない場合（勤労の所得がない場合）は範囲外の目安として表示します。学生にチェックを入れて計算すると、目安が出ます。</p>
+      <p class="src">出典: <a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1175.htm" target="_blank" rel="noopener">国税庁 No.1175</a></p>
+    </details>
+    <details>
+      <summary>古い記事の数字（103万円・48万円など）と違うのはなぜ？</summary>
+      <p>税制は毎年変わります。扶養の所得要件は、令和7年分が58万円以下、令和8年分から62万円以下です。古い記事には、改正前の数字が載っていることがあります。</p>
+      <p>このページは令和8年分（2026年1〜12月の収入。申告は2027年2〜3月ごろ）に絞って、国税庁のページで確認した数字だけを使っています。最終確認日は2026-11-06です。</p>
+      <p class="src">出典: <a href="https://www.nta.go.jp/taxes/shiraberu/taxanswer/shotoku/1180.htm" target="_blank" rel="noopener">国税庁 No.1180</a></p>
+    </details>
   </section>
 
   <section class="notes">

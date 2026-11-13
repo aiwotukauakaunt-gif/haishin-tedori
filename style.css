@@ -30,3 +30,9 @@ th{background:var(--bg)}
 a{color:var(--accent)}
 footer{padding-bottom:30px;font-size:.78rem;color:#566}
 @media(min-width:640px){.cards{grid-template-columns:1fr 1fr}}
+.faq details{border-top:1px solid var(--line);padding:2px 0}
+.faq details:first-of-type{border-top:0}
+.faq summary{cursor:pointer;font-weight:700;font-size:.95rem;padding:10px 0;list-style-position:outside;margin-left:1.2em}
+.faq details p{margin:6px 0 6px 1.2em;font-size:.88rem}
+.faq details[open]{padding-bottom:8px}
+.faq .src{font-size:.8rem;color:#566}
